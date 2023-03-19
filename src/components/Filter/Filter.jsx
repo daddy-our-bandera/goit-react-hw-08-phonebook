@@ -1,8 +1,8 @@
 import { Loader } from 'components/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { filterChange } from 'redux/filterSlice';
-import { getContacts, getFilter } from 'redux/selectors';
+import { filterChange } from 'redux/contacts/filterSlice';
+import { getContacts, getFilter } from 'redux/contacts/selectors';
 import { Input, SubTitleBox } from './Filter.styled';
 
 export const Filter = () => {
