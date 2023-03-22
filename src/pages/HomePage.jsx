@@ -1,9 +1,7 @@
-import { HomeBox } from 'components/HomeBox/HomeBox';
-import phonebook from 'images/phonebook.png';
-
-export const HomePage = () => {
+import phonebook from 'images/contactBookIcon.jpg';
+export default function HomePage() {
   return (
-    <HomeBox>
+    <div>
       <p>
         <b>Please login to watch your contacts</b>
       </p>
@@ -14,6 +12,6 @@ export const HomePage = () => {
         alt="phonebook"
         loading="lazy"
       />
-    </HomeBox>
+    </div>
   );
-};
+}

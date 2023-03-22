@@ -14,8 +14,10 @@ const ContactForm = () => {
     reset,
     getValues,
   } = useForm({ mode: 'onChange' });
+
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+
   const onSubmit = data => {
     const newName = getValues('name');
     const newNumber = getValues('number');
@@ -31,7 +33,6 @@ const ContactForm = () => {
       alert(`<${newName}> or <${newNumber}> is already in contacts`);
       return;
     }
-
     dispatch(addContact(data));
     reset();
   };
