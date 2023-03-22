@@ -1,12 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
-// import { lazy } from 'react';
-import Contacts from 'pages/Contacts';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
+
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
+
+// const HomePage = lazy(() => import('../pages/Home/Home'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -17,10 +19,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Contacts />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route index element={<ContactsPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Route>
     </Routes>
   );

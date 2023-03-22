@@ -7,15 +7,13 @@ export const LoginForm = () => {
     register,
     formState: { errors, isValid },
     handleSubmit,
-  } = useForm();
+  } = useForm({ mode: 'onChange' });
 
   const dispatch = useDispatch();
   const onSubmit = data => {
     dispatch(logIn({ email: data.email, password: data.password }));
   };
 
-  // semenblessed@gmail.com
-  // 9wHbbckVyZb
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,25 +22,23 @@ export const LoginForm = () => {
           <input
             {...register('email', {
               required: 'this field is required!',
-              minLength: {
-                value: 3,
-                message: 'length must be at least 3 characters!',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'invalid email address',
               },
             })}
-            type="text"
+            type="email"
           />
         </label>
-        <div>
-          {errors?.firstName && <p>{errors?.firstName?.message || 'Error!'}</p>}
-        </div>
+        <div>{errors?.email && <p>{errors.email.message || 'Error!'}</p>}</div>
         <label htmlFor="">
           Password:
           <input
             {...register('password', {
               required: 'this field is required!',
-              minLength: {
-                min: 3,
-                message: 'length must be at least 3 characters!',
+              pattern: {
+                value: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                message: 'invalid password address',
               },
             })}
             type="text"
