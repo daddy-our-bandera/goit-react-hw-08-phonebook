@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
 
-export const LoadBox = styled.div`
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
+export const LoadBox = styled.div``;
+export const PageSpinner = styled.div`
   position: absolute;
-  right: 49%;
-  bottom: 20px;
+  right: 50%;
+  top: 50%;
 `;

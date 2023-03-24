@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { filterChange } from 'redux/contacts/filterSlice';
 import { getContacts, getFilter } from 'redux/contacts/selectors';
-import { Input, SubTitleBox } from './Filter.styled';
+import { Input, LoaderBox, SubTitleBox } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -16,11 +16,13 @@ export const Filter = () => {
   return (
     <div>
       <SubTitleBox>
-        {isLoading && <Loader></Loader>}
+        <LoaderBox> {isLoading && <Loader></Loader>}</LoaderBox>
+
         <h2>Contacts</h2>
       </SubTitleBox>
       {items.length ? (
         <Input
+          autoComplete="off"
           name="name"
           type="text"
           placeholder="find contacts by name"

@@ -9,7 +9,6 @@ import { List } from './ContactList.styled';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  // const { error } = useSelector(getContacts);
   const filteredContacts = useSelector(getFilteredContacts);
 
   useEffect(() => {

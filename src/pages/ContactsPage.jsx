@@ -6,7 +6,6 @@ export default function Contacts() {
   return (
     <div>
       <Section>
-        <h1>Phonebook</h1>
         <ContactForm />
       </Section>
 

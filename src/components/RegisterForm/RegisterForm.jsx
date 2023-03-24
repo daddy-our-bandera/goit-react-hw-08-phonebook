@@ -1,3 +1,9 @@
+import {
+  Btn,
+  Form,
+  FormBox,
+  UserBox,
+} from 'components/ContactForm/ContactForm.styled';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { registration } from 'redux/auth/operations';
@@ -21,11 +27,12 @@ export const RegisterForm = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="">
-          Username:
+    <FormBox>
+      <h2>Register</h2>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <UserBox>
           <input
+            placeholder="Username:"
             {...register('username', {
               required: 'this field is required!',
               minLength: {
@@ -35,13 +42,14 @@ export const RegisterForm = () => {
             })}
             type="name"
           />
-        </label>
-        <div>
-          {errors?.username && <p>{errors?.username?.message || 'Error!'}</p>}
-        </div>
-        <label htmlFor="">
-          Email:
+          <label htmlFor="">
+            {errors?.username && <p>{errors?.username?.message || 'Error!'}</p>}
+          </label>
+        </UserBox>
+
+        <UserBox>
           <input
+            placeholder="Email:"
             {...register('email', {
               required: 'this field is required!',
               pattern: {
@@ -51,13 +59,14 @@ export const RegisterForm = () => {
             })}
             type="email"
           />
-        </label>
-        <div>
-          {errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}
-        </div>
-        <label htmlFor="">
-          Password:
+          <label htmlFor="">
+            {errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}
+          </label>
+        </UserBox>
+
+        <UserBox>
           <input
+            placeholder="Passwor:"
             {...register('password', {
               required: 'this field is required!',
               pattern: {
@@ -65,14 +74,17 @@ export const RegisterForm = () => {
                 message: 'invalid password address',
               },
             })}
-            type="text"
+            type="password"
           />
-        </label>
-        <div>
-          {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}
-        </div>
-        <input type="submit" disabled={!isValid}></input>
-      </form>
-    </>
+          <label htmlFor="">
+            {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}
+          </label>
+        </UserBox>
+
+        <Btn type="submit" disabled={!isValid}>
+          register
+        </Btn>
+      </Form>
+    </FormBox>
   );
 };

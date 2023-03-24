@@ -10,7 +10,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import NotFoundPage from 'pages/NotFoundPage';
 import { PageLoader } from './Loader/Loader';
 
-const HomePage = lazy(() => import('pages/HomePage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));

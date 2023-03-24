@@ -1,3 +1,9 @@
+import {
+  Btn,
+  Form,
+  FormBox,
+  UserBox,
+} from 'components/ContactForm/ContactForm.styled';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
@@ -15,38 +21,46 @@ export const LoginForm = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="">
-          Email:
+    <FormBox>
+      <h2>Login</h2>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <UserBox>
           <input
+            placeholder="Email:"
             {...register('email', {
-              required: 'this field is required!',
+              required: 'This field is required!',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'invalid email address',
+                message: 'Invalid email address',
               },
             })}
             type="email"
           />
-        </label>
-        <div>{errors?.email && <p>{errors.email.message || 'Error!'}</p>}</div>
-        <label htmlFor="">
-          Password:
+          <label htmlFor="">
+            {errors?.email && <p>{errors.email.message || 'Error!'}</p>}
+          </label>
+        </UserBox>
+        {/* 9wHbbckVyZb */}
+        <UserBox>
           <input
+            placeholder="Password:"
             {...register('password', {
-              required: 'this field is required!',
+              required: 'This field is required!',
               pattern: {
                 value: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                message: 'invalid password address',
+                message: 'Invalid password address',
               },
             })}
-            type="text"
+            type="password"
           />
-        </label>
-
-        <input type="submit" disabled={!isValid} />
-      </form>
-    </>
+          <label htmlFor="">
+            {errors?.password && <p>{errors.password.message || 'Error!'}</p>}
+          </label>
+        </UserBox>
+        <Btn type="submit" disabled={!isValid}>
+          log in
+        </Btn>
+      </Form>
+    </FormBox>
   );
 };

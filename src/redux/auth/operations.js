@@ -17,8 +17,10 @@ export const registration = createAsyncThunk(
     try {
       const response = await axios.post('/users/signup', credentials);
       setAuthHeader(response.data.token);
+
       return response.data;
     } catch (error) {
+      alert('User creation error', { theme: 'colored' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,8 +32,10 @@ export const logIn = createAsyncThunk(
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
+
       return response.data;
     } catch (error) {
+      alert('Login error', { theme: 'colored' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
